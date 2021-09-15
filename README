@@ -1,0 +1,24 @@
+pledgeme
+========
+execute a program while restricting its system operations
+
+synopsis
+--------
+    pledgeme <promises> program [argument ...]
+
+description
+-----------
+pledgeme runs the specified program while forcing the program into a
+restricted-service operating mode. It does this by calling the pledge(2)
+system call, passing the promises argument as execpromises.
+
+The promises argument is specified as a string with space separted keywords.
+See pledge(2) for a list of these keywords and what system calls they restrict.
+
+example
+-------
+    pledgeme "stdio rpath getpw tty" ls -a
+
+see also
+--------
+pledge(2)
