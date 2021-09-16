@@ -1,0 +1,34 @@
+.Dd $Mdocdate: September 16 2021 $
+.Dt PLEDGEME 1
+.Os
+.Sh NAME
+.Nm pledgeme
+.Nd execute a program while restricting its system operations
+.Sh SYNOPSIS
+.Nm pledgeme
+.Ar <promises>
+.Ar program
+.Op Ar argument ...
+.Sh DESCRIPTION
+.Nm
+runs the specified program while forcing it into a restricted-service
+operating mode. It does this by calling
+.Xr pledge 2 ,
+passing
+.Ar promises
+to its  
+.Ar execpromises 
+argument.
+
+.Ar promises
+are specified as a string with space separated keywords.
+See 
+.Xr pledge 2
+for a list of these keywords and what system calls they restrict.
+.Sh EXAMPLE
+.Pp
+.Nm
+"stdio rpath getpw tty" ls \-a
+.Pp
+.Sh SEE ALSO
+.Xr pledge 2
